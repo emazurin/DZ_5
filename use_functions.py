@@ -35,7 +35,17 @@
 """
 
 money = 0.00
-def credit():
+hist = []
+
+
+def input_money(text):
+    return (input(text))
+
+
+def p_hist(hist):
+    for j in hist:
+        print(j[0], '  ', j[1])
+    pass
 
 
 while True:
@@ -44,14 +54,25 @@ while True:
     print('3. история покупок')
     print('4. выход')
 
-    choice = input('Выберите пункт меню')
+    choice = input('Выберите пункт меню: ')
     if choice == '1':
+        money += float(input_money('Введите сумму пополнения: '))
         pass
     elif choice == '2':
+        deb = float(input_money('Введите сумму покупки: '))
+        if deb > money:
+            print('Сумма покупки больше доступного остатка')
+        else:
+            s = input_money('Введите название покупки: ')
+            money = money - deb
+            hist.append([s, deb])
         pass
     elif choice == '3':
+        p_hist(hist)
         pass
     elif choice == '4':
         break
     else:
         print('Неверный пункт меню')
+
+
